@@ -124,8 +124,8 @@ func (f *ScreenPrinter) formatSubject(subject string, isPriority bool) string {
 
 func (f *ScreenPrinter) formatCompleted(completed bool) string {
 	if completed {
-		return "[x]"
+		return "[completed]"
 	} else {
-		return "[ ]"
+		return "[not completed]"
 	}
 }
