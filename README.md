@@ -1,32 +1,21 @@
 # Todolist
 
-[![](https://goreportcard.com/badge/github.com/gammons/todolist)](https://goreportcard.com/report/github.com/gammons/todolist)
-[![Build Status](https://travis-ci.org/gammons/todolist.svg?branch=master)](https://travis-ci.org/gammons/todolist)
+## Description
+Simple and convinirent todolist, which is use [gammons todolist](https://github.com/gammons/todolist) code.
+Uses as a base for [LightTaskManager project](https://github.com/moevm/gui-1h2018-06)
 
-Todolist is a simple and very fast task manager for the command line.  It is based on the [Getting Things Done][gtd] methodology.
+## Installation step
+1. Install Go
+1. Setup `&GOPATH`, `&GOROOT`, `&GOBIN`
+1. `cd &GOPATH`
+1. `mkdir -p /src/github.com/gammons`
+1. `git clone git@github.com:Xtails-Inc/todolist.git`
+1. `go det ./...`
 
-[gtd]: http://lifehacker.com/productivity-101-a-primer-to-the-getting-things-done-1551880955
-
-## Documentation
-
-**See [The main Todolist website][tdl] for the current documentation.**
-
-[tdl]: http://todolist.site
-
-## The frontend webapp
-
-The frontend is an open source React/Redux based app that is hosted at https://github.com/gammons/todolist_frontend.
-
-## Is it good?
-
-Yes.  Yes it is.
-
-## Author
-
-Please send complaints, complements, rants, etc to [Grant Ammons][ga]
+## Testing installation
+1. `cd $GOBIN`
+1. `./todolist`
 
 ## License
 
 Todolist is open source, and uses the [MIT license](https://github.com/gammons/todolist/blob/master/LICENSE.md).
-
-[ga]: https://twitter.com/gammons
