@@ -10,7 +10,7 @@ Uses as a base for [LightTaskManager project](https://github.com/moevm/gui-1h201
 1. `cd &GOPATH`
 1. `mkdir -p /src/github.com/gammons`
 1. `git clone git@github.com:Xtails-Inc/todolist.git`
-1. `go det ./...`
+1. `go get ./...`
 
 ## Testing installation
 1. `cd $GOBIN`
