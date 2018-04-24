@@ -37,16 +37,17 @@ func (t Todo) CalculateDueTime() time.Time {
 }
 
 func (t *Todo) Complete(index int) {
-	t.Completed = index
-	t.CompletedDate = timestamp(time.Now()).Format(ISO8601_TIMESTAMP_FORMAT)
+	if index > t.Completed {
+		t.Completed = index
+		t.CompletedDate = timestamp(time.Now()).Format(ISO8601_TIMESTAMP_FORMAT)
+	}
 }
 
 func (t *Todo) Uncomplete(index int) {
-	if index < 0 {
-		index = 0
+	if index < t.Completed && index >= 0 {
+		t.Completed = index
+		t.CompletedDate = ""
 	}
-	t.Completed = index
-	t.CompletedDate = ""
 }
 
 func (t *Todo) Archive() {

@@ -78,7 +78,9 @@ func (a *App) CompleteTodo(input string) {
 	if len(ids) == 0 {
 		return
 	}
-	a.TodoList.Complete(ids...)
+
+	statusIndex := a.getStatusIndex(input)
+	a.TodoList.Complete(statusIndex, ids...)
 	a.Save()
 	fmt.Println("Todo completed.")
 }
@@ -89,7 +91,9 @@ func (a *App) UncompleteTodo(input string) {
 	if len(ids) == 0 {
 		return
 	}
-	a.TodoList.Uncomplete(ids...)
+
+	statusIndex := a.getStatusIndex(input)
+	a.TodoList.Uncomplete(statusIndex, ids...)
 	a.Save()
 	fmt.Println("Todo uncompleted.")
 }
@@ -260,6 +264,21 @@ func (a *App) getIds(input string) (ids []int) {
 		}
 	}
 	return ids
+}
+
+func (a *App) getStatusIndex(input string) int {
+	index := 0
+	parsed := strings.Split(input, " ")
+	if len(parsed) > 2 {
+		ret, err := strconv.Atoi(parsed[2])
+		if err != nil {
+			fmt.Println(err)
+			index = 0
+		} else {
+			index = ret
+		}
+	}
+	return index
 }
 
 func (a *App) parseRangedIds(input string) (ids []int, err error) {

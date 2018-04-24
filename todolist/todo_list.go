@@ -32,25 +32,25 @@ func (t *TodoList) Delete(ids ...int) {
 	}
 }
 
-func (t *TodoList) Complete(ids ...int) {
+func (t *TodoList) Complete(statusIndex int, ids ...int) {
 	for _, id := range ids {
 		todo := t.FindById(id)
 		if todo == nil {
 			continue
 		}
-		todo.Complete(todo.Completed + 1)
+		todo.Complete(statusIndex)
 		t.Delete(id)
 		t.Data = append(t.Data, todo)
 	}
 }
 
-func (t *TodoList) Uncomplete(ids ...int) {
+func (t *TodoList) Uncomplete(statusIndex int, ids ...int) {
 	for _, id := range ids {
 		todo := t.FindById(id)
 		if todo == nil {
 			continue
 		}
-		todo.Uncomplete(todo.Completed - 1)
+		todo.Uncomplete(statusIndex)
 		t.Delete(id)
 		t.Data = append(t.Data, todo)
 	}
