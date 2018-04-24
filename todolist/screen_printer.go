@@ -122,10 +122,6 @@ func (f *ScreenPrinter) formatSubject(subject string, isPriority bool) string {
 
 }
 
-func (f *ScreenPrinter) formatCompleted(completed bool) string {
-	if completed {
-		return "[completed]"
-	} else {
-		return "[not completed]"
-	}
+func (f *ScreenPrinter) formatCompleted(index int) string {
+	return "[" + strconv.Itoa(index) + "]";
 }

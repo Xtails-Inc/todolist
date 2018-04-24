@@ -38,7 +38,7 @@ func (t *TodoList) Complete(ids ...int) {
 		if todo == nil {
 			continue
 		}
-		todo.Complete()
+		todo.Complete(todo.Completed + 1)
 		t.Delete(id)
 		t.Data = append(t.Data, todo)
 	}
@@ -50,7 +50,7 @@ func (t *TodoList) Uncomplete(ids ...int) {
 		if todo == nil {
 			continue
 		}
-		todo.Uncomplete()
+		todo.Uncomplete(todo.Completed - 1)
 		t.Delete(id)
 		t.Data = append(t.Data, todo)
 	}

@@ -193,7 +193,7 @@ func (a *App) HandleNotes(input string) {
 func (a *App) ArchiveCompleted() {
 	a.Load()
 	for _, todo := range a.TodoList.Todos() {
-		if todo.Completed {
+		if (todo.Completed != 0) {
 			todo.Archive()
 		}
 	}

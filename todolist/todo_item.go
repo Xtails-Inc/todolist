@@ -11,7 +11,7 @@ type Todo struct {
 	Projects      []string `json:"projects"`
 	Contexts      []string `json:"contexts"`
 	Due           string   `json:"due"`
-	Completed     bool     `json:"completed"`
+	Completed     int      `json:"completed"`
 	CompletedDate string   `json:"completedDate"`
 	Archived      bool     `json:"archived"`
 	IsPriority    bool     `json:"isPriority"`
@@ -19,7 +19,7 @@ type Todo struct {
 }
 
 func NewTodo() *Todo {
-	return &Todo{Completed: false, Archived: false, IsPriority: false}
+	return &Todo{Completed: 0, Archived: false, IsPriority: false}
 }
 
 func (t Todo) Valid() bool {
@@ -36,13 +36,16 @@ func (t Todo) CalculateDueTime() time.Time {
 	}
 }
 
-func (t *Todo) Complete() {
-	t.Completed = true
+func (t *Todo) Complete(index int) {
+	t.Completed = index
 	t.CompletedDate = timestamp(time.Now()).Format(ISO8601_TIMESTAMP_FORMAT)
 }
 
-func (t *Todo) Uncomplete() {
-	t.Completed = false
+func (t *Todo) Uncomplete(index int) {
+	if index < 0 {
+		index = 0
+	}
+	t.Completed = index
 	t.CompletedDate = ""
 }
 
